@@ -1,7 +1,6 @@
 <template>
   <nav class="navigation">
     <nuxt-link to="/">Home</nuxt-link>
-    <nuxt-link to="/nasa/">Nasa</nuxt-link>
   </nav>
 </template>
 

@@ -36,14 +36,12 @@
 </template>
 
 <script>
-import fetch from 'node-fetch';
-
-const URL = 'https://images-api.nasa.gov/search?media_type=image&q=apollo';
+import {mapState, mapActions} from 'vuex';
 
 export default {
   head() {
     return {
-      title: this.getImage.data[0].title,
+      title: 'Title',
       meta: [
         { name: 'twitter:title', content: ''},
         { name: 'twitter:description', content: ''},
@@ -53,36 +51,17 @@ export default {
   },
   data() {
     return {
-      id: this.$route.params.image,
-      images: []
+      id: this.$route.params.image
     };
   },
   computed: {
+    ...mapState(['nasa']),
     getImage() {
-      return this.images.find(image => image.data[0].nasa_id === this.id);
+      return this.nasa.images.find(image => image.data[0].nasa_id === this.id);
     },
     relatedImages() {
-      return this.images.filter(image => image.data[0].nasa_id !== this.id);
+      return this.nasa.images.filter(image => image.data[0].nasa_id !== this.id);
     }
-  },
-  mounted() {
-    const vm = this;
-
-    fetch(URL).then(
-      function(response) {
-        if (response.status !== 200) {
-          console.log('Looks like there was a problem. Status Code: ' +
-            response.status);
-          return;
-        }
-
-        response.json().then(function(data) {
-          vm.images = data.collection.items.slice(0, 24);
-        });
-      }
-    ).catch(function(err) {
-      console.log('Fetch Error', err);
-    });
   }
 }
 </script>

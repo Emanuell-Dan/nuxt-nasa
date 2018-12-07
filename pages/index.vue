@@ -19,13 +19,14 @@
           class="button--grey">GitHub</a>
       </div>
     </div>
-    <nasa />
+    <nasa :nasa-gallery="nasa" />
   </section>
 </template>
 
 <script>
+import {mapState} from 'vuex';
 import Logo from '~/components/Logo.vue';
-import Nasa from './Nasa.vue';
+import Nasa from '~/components/Nasa.vue';
 
 export default {
   components: {
@@ -40,6 +41,12 @@ export default {
         { name: 'twitter:description', content: 'Nuxt + NASA'}
       ]
     }
+  },
+  computed: {
+    ...mapState(['nasa'])
+  },
+  created() {
+    // this.$store.dispatch('nasa/getImages'); // should not need this with SSR
   }
 }
 </script>

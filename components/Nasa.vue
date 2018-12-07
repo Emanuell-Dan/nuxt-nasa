@@ -2,8 +2,8 @@
   <div class="nasa">
     <ul class="nasa__list">
       <li
-        v-for="image in images"
-        :key="image.data[0].nasa_id"
+        v-for="(image, index) in nasaGallery.images"
+        :key="index"
         class="nasa__list-item">
         <nuxt-link :to="`/nasa/${image.data[0].nasa_id}`">
           <img
@@ -16,43 +16,22 @@
 </template>
 
 <script>
-import fetch from 'node-fetch';
-
-const URL = 'https://images-api.nasa.gov/search?media_type=image&q=apollo';
 
 export default {
   head() {
     return {
-      title: 'Nasa',
+      title: 'Nuxt.js + Nasa <3',
       meta: [
         { name: 'twitter:title', content: 'NASA gallery'},
         { name: 'twitter:description', content: 'NASA apollo images'}
       ]
     }
   },
-  data() {
-    return {
-      images: []
-    };
-  },
-  mounted() {
-    const vm = this;
-
-    fetch(URL).then(
-      function(response) {
-        if (response.status !== 200) {
-          console.log('Looks like there was a problem. Status Code: ' +
-            response.status);
-          return;
-        }
-
-        response.json().then(function(data) {
-          vm.images = data.collection.items.slice(0, 24);
-        });
-      }
-    ).catch(function(err) {
-      console.log('Fetch Error', err);
-    });
+  props: {
+    nasaGallery: {
+      type: Object,
+      required: true
+    }
   }
 }
 </script>
