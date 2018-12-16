@@ -1,4 +1,4 @@
-import fetch from 'node-fetch';
+import Axios from "axios"
 
 export const state = () => ({
   images: []
@@ -12,12 +12,9 @@ export const mutations = {
   }
 }
 
-export const actions = {
-  getImages(store) {
-    return fetch('https://images-api.nasa.gov/search?media_type=image&q=apollo').then(response => {
-      response.json().then(function(data) {
-          store.commit('storeImages', data.collection.items.slice(0, 24));
-      });
-    });
-  }
+export const actions = { 
+  async getImages(store) {
+    let res = await Axios.get('https://images-api.nasa.gov/search?media_type=image&q=apollo')
+    store.commit('storeImages', res.data.collection.items.slice(0, 24))
+  } 
 }
