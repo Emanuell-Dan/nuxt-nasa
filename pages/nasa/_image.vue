@@ -41,11 +41,11 @@ import {mapState, mapActions} from 'vuex';
 export default {
   head() {
     return {
-      title: 'Title',
+      title: this.getImage.data[0].title,
       meta: [
-        { name: 'twitter:title', content: ''},
-        { name: 'twitter:description', content: ''},
-        { name: 'twitter:image', content: ''}
+        { name: 'twitter:title', content: this.getImage.data[0].title},
+        { name: 'twitter:description', content: this.getImage.data[0].description || this.getImage.data[0].description_508},
+        { name: 'twitter:image', content: this.getImage.links[0].href}
       ]
     }
   },

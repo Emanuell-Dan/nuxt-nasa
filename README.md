@@ -1,6 +1,15 @@
-# nasa-nuxt
+# Nuxt.js + NASA api
 
-> My flawless Nuxt.js project
+**Exercise tasks:**
+
+- Get an app up and running with **create nuxt-app**
+- Fetch a small gallery of photos from the 
+[NASA api](https://api.nasa.gov/api.html#Images)
+- Images in the gallery will be clickable and take you to a new route of that image
+- Implement dynamic routing for the above
+- Move fetch/axios to Vuex
+- SEO & meta tags
+- Deploy the app on Heroku
 
 ## Build Setup
 
@@ -19,4 +28,4 @@ $ yarn start
 $ yarn run generate
 ```
 
-For detailed explanation on how things work, checkout [Nuxt.js docs](https://nuxtjs.org).
+For detailed explanation on how things work, checkout [Nuxt.js docs](https://nuxtjs.org)

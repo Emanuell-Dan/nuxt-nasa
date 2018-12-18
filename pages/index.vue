@@ -44,9 +44,6 @@ export default {
   },
   computed: {
     ...mapState(['nasa'])
-  },
-  created() {
-    // this.$store.dispatch('nasa/getImages'); // should not need this with SSR
   }
 }
 </script>

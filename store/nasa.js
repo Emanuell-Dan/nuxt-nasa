@@ -6,9 +6,7 @@ export const state = () => ({
 
 export const mutations = {
   storeImages(state, data) {
-    state.images = [];
     state.images.push(...data);
-    console.log(state.images[0]); // this logs in the terminal (store gets update server-side)
   }
 }
 

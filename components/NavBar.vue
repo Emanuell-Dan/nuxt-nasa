@@ -4,10 +4,6 @@
   </nav>
 </template>
 
-<script>
-
-</script>
-
 <style lang="scss">
   .navigation {
     color: #ffffff;
