@@ -14,7 +14,7 @@
     "heroku-postbuild": "npm run build"
   },
   "dependencies": {
-    "axios": "^0.18.0",
+    "axios": "^0.18.1",
     "cross-env": "^5.2.0",
     "nuxt": "^2.0.0"
   },
